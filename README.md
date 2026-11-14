@@ -4,11 +4,25 @@ m3uFileCopy は、iTunes のライブラリ XML（`iTunes Library.xml`）を読�
 選択したプレイリストの楽曲ファイルを USB メモリなどへ一括コピーし、
 同時に `.m3u` プレイリストを出力する Windows 向けツールです。
 
+## ダウンロード・起動
+
+**[ダウンロード（ZIP）](https://github.com/nPYO/m3uFileCopy/archive/refs/heads/master.zip)**
+
+1. ZIPを展開します。
+2. 展開先の `m3uFileCopy.exe` を起動します。
+3. `AxInterop.WMPLib.dll` と `Interop.WMPLib.dll` はEXEと同じフォルダーに置いてください。
+
+このZIPは現在のリポジトリ一式です。ソースコード（`SRC/`）も含まれます。
+Releaseページでのバージョン別配布ではなく、リポジトリ直下の既存実行ファイルを配布しています。
+
+> **コピー先の確認:** 同名の出力フォルダーが存在する場合、確認後に中身ごと削除されます。必要なファイルのあるフォルダーを出力先に使わず、先にバックアップしてください。
+
 ## 動作環境
 
-- Windows 10 64bit（確認環境）
+- Windows 10 64bit（従来の確認環境）
 - .NET Framework 4.7.2
-- iTunes 12.11.4.15（確認環境）
+- Windows Media PlayerのCOMコンポーネント（トラックの試聴に使用）
+- iTunes 12.11.4.15（従来の確認環境）
 
 ## 事前準備（iTunes 側）
 
@@ -70,6 +84,8 @@ m3uFileCopy は、iTunes のライブラリ XML（`iTunes Library.xml`）を読�
 - ローカルに未ダウンロードの楽曲（Location なし）はコピーできません。
 - 出力先に同名フォルダがある場合、確認後に削除して再作成します。
 - 大量コピー前に空き容量とバックアップを確認してください。
+- 元ファイル名モードで同じ名前の曲があると、コピー先の同名ファイルが上書きされます。連番を付けるモードを選ぶと区別できます。
+- 音楽形式の変換や、配信サービスからの楽曲ダウンロードを行うツールではありません。コピーした楽曲を再生できるかは、出力先の機器と形式に依存します。
 
 ## 設定ファイル
 
@@ -83,3 +99,18 @@ m3uFileCopy は、iTunes のライブラリ XML（`iTunes Library.xml`）を読�
 保存先（既定）:
 
 `C:\Users\<User>\AppData\Local\nPYO\m3uFileCopy.ini`
+
+## ソースコード・開発環境
+
+[Visual Basicプロジェクト](SRC/m3uFileCopy.vbproj)と[ソリューション](SRC/m3uFileCopy.sln)を公開しています。
+Windows Forms / .NET Framework 4.7.2を対象とし、Windows Media PlayerのCOM参照を使用します。
+
+## 配布状況・問い合わせ
+
+この案内は公開ソースと既存の説明に基づいています。今回のページ整備では実行ファイルの更新、現在のWindows・iTunesでの再試験は行っていません。
+
+不具合は[Issues](https://github.com/nPYO/m3uFileCopy/issues)へ、Windows・iTunesのバージョンと再現手順を添えて報告してください。個人のライブラリXMLや実際のファイルパスをそのまま公開しないでください。
+
+## ライセンス
+
+このリポジトリにはライセンスファイルがありません。改変・再配布などの利用条件が必要な場合は作者へ確認してください。依存する第三者ソフトウェアには各提供者の条件が適用されます。
